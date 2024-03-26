@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import '../utils/enum/app_route_enum.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -9,7 +12,7 @@ class SignInScreen extends StatelessWidget {
       body: Center(
         child: TextButton(
           child: const Text('sign in'),
-          onPressed: () {},
+          onPressed: () => context.goNamed(AppRouteEnum.dashboard.name),
         ),
       ),
     );
