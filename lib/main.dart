@@ -13,10 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Zoom',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      theme: ThemeData.dark(
         useMaterial3: true,
-      ),
+      ).copyWith(scaffoldBackgroundColor: const Color.fromRGBO(36, 36, 36, 1)),
       routerConfig: AppRouteConfig.routeConfig,
     );
   }
