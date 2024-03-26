@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom/gen/assets.gen.dart';
+import 'package:flutter_zoom/utils/string_util.dart';
 import 'package:go_router/go_router.dart';
 
 import '../utils/enum/app_route_enum.dart';
+import '../widgets/zoom_button_widget.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -14,7 +16,7 @@ class SignInScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'Start or join a meeting',
+            StringUtil.startMeeting,
             style: TextStyle(
               fontSize: 24,
               color: Colors.white,
@@ -26,23 +28,10 @@ class SignInScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(18),
-            child: ElevatedButton(
-              onPressed: () => context.goNamed(AppRouteEnum.dashboard.name),
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromRGBO(14, 114, 236, 1),
-                  minimumSize: const Size(
-                    double.infinity,
-                    50,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  )),
-              child: const Text(
-                'Google Sign In',
-                style: TextStyle(
-                  fontSize: 17,
-                  color: Colors.white,
-                ),
+            child: ZoomButtonWidget(
+              label: StringUtil.googleSignIn,
+              onPressed: () => context.goNamed(
+                AppRouteEnum.dashboard.name,
               ),
             ),
           ),
