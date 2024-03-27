@@ -1,11 +1,15 @@
 enum AppRouteEnum {
+  splash(
+    name: 'splash',
+    path: '/splash',
+  ),
   signIn(
     name: 'signIn',
     path: '/signIn',
   ),
   dashboard(
     name: 'dashboard',
-    path: 'dashboard',
+    path: '/dashboard',
   );
 
   const AppRouteEnum({
