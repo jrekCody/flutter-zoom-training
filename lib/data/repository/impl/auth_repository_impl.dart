@@ -8,7 +8,7 @@ class AuthRepositoryImpl implements AuthRepository {
   const AuthRepositoryImpl(this.firebaseAuth);
 
   @override
-  Future<bool> signInWithGoogle() async {
+  Future<UserCredential> signInWithGoogle() async {
     // Trigger the authentication flow
     final googleUser = await GoogleSignIn().signIn();
 
@@ -21,13 +21,8 @@ class AuthRepositoryImpl implements AuthRepository {
       idToken: auth?.idToken,
     );
 
-    // Sign in credential
-    final userCredential = await firebaseAuth.signInWithCredential(credential);
+    // Sign in credential, and return UserCredential
+    return await firebaseAuth.signInWithCredential(credential);
 
-    // Obtain the user object
-    final user = userCredential.user;
-
-    // return bool whether the sign in succeed
-    return user != null ? true : false;
   }
 }
