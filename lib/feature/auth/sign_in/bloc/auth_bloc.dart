@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom/data/repository/auth_repository.dart';
@@ -19,12 +20,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required this.userRepository,
   }) : super(const AuthState()) {
     on<AuthSignInStarted>(_onAuthSignInStarted);
+    on<AuthUserChanged>(_onAuthUserChanged);
+    on<AuthUpdatedUser>(_onAuthUpdatedUser);
   }
+
+  late StreamSubscription _streamUserAuthChanged;
 
   FutureOr<void> _onAuthSignInStarted(
     AuthSignInStarted event,
     Emitter<AuthState> emit,
   ) async {
+    emit(const AuthLoading());
     final userCredential = await authRepository.signInWithGoogle();
     final user = userCredential.user;
     if (user != null) {
@@ -36,6 +42,34 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           photo: user.photoURL ?? '',
         );
       }
+      emit(Authenticated(user: user));
+    } else {
+      emit(const UnAuthenticated());
     }
+  }
+
+  FutureOr<void> _onAuthUserChanged(
+    AuthUserChanged event,
+    Emitter<AuthState> emit,
+  ) {
+    final streamUser = authRepository.userAuthChanges();
+    _streamUserAuthChanged = streamUser.listen((event) {
+      if (event != null) {
+        add(AuthUpdatedUser(user: event));
+      }
+    });
+  }
+
+  FutureOr<void> _onAuthUpdatedUser(
+    AuthUpdatedUser event,
+    Emitter<AuthState> emit,
+  ) {
+    emit(Authenticated(user: event.user));
+  }
+
+  @override
+  Future<void> close() {
+    _streamUserAuthChanged.cancel();
+    return super.close();
   }
 }

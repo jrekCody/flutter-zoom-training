@@ -1,16 +1,25 @@
 part of 'auth_bloc.dart';
 
-class AuthState extends Equatable {
-  const AuthState({
-    this.isSignedIn = false,
-  });
-
-  final bool isSignedIn;
+final class AuthState extends Equatable {
+  const AuthState();
 
   @override
-  List<Object?> get props => [isSignedIn];
+  List<Object?> get props => [];
+}
 
-  AuthState copyWith({bool? isSignedIn}) {
-    return AuthState(isSignedIn: isSignedIn ?? this.isSignedIn);
-  }
+final class AuthLoading extends AuthState {
+  const AuthLoading();
+}
+
+final class Authenticated extends AuthState {
+  const Authenticated({required this.user});
+
+  final User user;
+
+  @override
+  List<Object?> get props => [user];
+}
+
+final class UnAuthenticated extends AuthState {
+  const UnAuthenticated();
 }

@@ -20,4 +20,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
     return await firebaseAuth.signInWithCredential(credential);
   }
+
+  @override
+  Stream<User?> userAuthChanges() => firebaseAuth.authStateChanges();
 }

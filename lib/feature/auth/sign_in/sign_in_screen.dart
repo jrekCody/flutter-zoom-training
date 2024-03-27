@@ -12,22 +12,36 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            StringUtil.startMeeting,
-            style: TextStyle(
-              fontSize: 24,
-              color: Colors.white,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30),
-            child: Image.asset(Assets.image.onboarding.path),
-          ),
-          _buildGoogleSignInButton(context),
-        ],
+      body: BlocBuilder<AuthBloc, AuthState>(
+        builder: (context, state) {
+          return Stack(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    StringUtil.startMeeting,
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 30),
+                    child: Image.asset(Assets.image.onboarding.path),
+                  ),
+                  _buildGoogleSignInButton(context),
+                ],
+              ),
+              if (state is AuthLoading)
+                const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.blue,
+                  ),
+                ),
+            ],
+          );
+        },
       ),
     );
   }
