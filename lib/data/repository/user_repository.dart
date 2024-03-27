@@ -1,7 +1,8 @@
 abstract class UserRepository {
-  Future<void> saveUser(
-    String uid,
-    String userName,
-    String photo,
-  );
+  Future<void> saveUser({
+    required String uid,
+    required String email,
+    required String name,
+    required String photo,
+  });
 }

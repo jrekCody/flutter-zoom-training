@@ -30,9 +30,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (user != null) {
       if (userCredential.additionalUserInfo!.isNewUser) {
         await userRepository.saveUser(
-          user.uid,
-          user.displayName ?? 'no-name',
-          user.photoURL ?? '',
+          uid: user.uid,
+          email: user.email ?? '',
+          name: user.displayName ?? '',
+          photo: user.photoURL ?? '',
         );
       }
     }
