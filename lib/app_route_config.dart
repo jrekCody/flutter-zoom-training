@@ -1,8 +1,8 @@
-import 'package:flutter_zoom/screens/sign_in_screen.dart';
+import 'package:flutter_zoom/feature/auth/sign_in/sign_in_screen.dart';
 import 'package:flutter_zoom/utils/enum/app_route_enum.dart';
 import 'package:go_router/go_router.dart';
 
-import 'screens/dashboard_screen.dart';
+import 'feature/dashboard_screen.dart';
 
 final class AppRouteConfig {
   AppRouteConfig._();
