@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom/gen/assets.gen.dart';
 import 'package:flutter_zoom/utils/string_util.dart';
-import 'package:go_router/go_router.dart';
 
-import '../utils/enum/app_route_enum.dart';
-import '../widgets/zoom_button_widget.dart';
+import '../../../widgets/zoom_button_widget.dart';
+import 'bloc/auth_bloc.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -26,17 +26,20 @@ class SignInScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 30),
             child: Image.asset(Assets.image.onboarding.path),
           ),
-          Padding(
-            padding: const EdgeInsets.all(18),
-            child: ZoomButtonWidget(
-              label: StringUtil.googleSignIn,
-              onPressed: () => context.goNamed(
-                AppRouteEnum.dashboard.name,
-              ),
-            ),
-          ),
+          _buildGoogleSignInButton(context),
         ],
       ),
     );
+  }
+
+  Widget _buildGoogleSignInButton(BuildContext context) {
+    return Padding(
+        padding: const EdgeInsets.all(18),
+        child: ZoomButtonWidget(
+          label: StringUtil.googleSignIn,
+          onPressed: () {
+            context.read<AuthBloc>().add(const AuthSignInStarted());
+          },
+        ));
   }
 }
