@@ -7,9 +7,21 @@ enum AppRouteEnum {
     name: 'signIn',
     path: '/signIn',
   ),
-  dashboard(
-    name: 'dashboard',
-    path: '/dashboard',
+  meetChat(
+    name: 'meetChat',
+    path: '/meetChat',
+  ),
+  meetings(
+    name: 'meetings',
+    path: '/meetings',
+  ),
+  contacts(
+    name: 'contacts',
+    path: '/contacts',
+  ),
+  settings(
+    name: 'settings',
+    path: '/settings',
   );
 
   const AppRouteEnum({
