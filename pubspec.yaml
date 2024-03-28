@@ -38,3 +38,10 @@ flutter:
   assets:
     - assets/image/
 
+  fonts:
+    - family: Lato
+      fonts:
+        - asset: assets/font/Lato-Black.ttf
+        - asset: assets/font/Lato-Bold.ttf
+        - asset: assets/font/Lato-Light.ttf
+        - asset: assets/font/Lato-Regular.ttf

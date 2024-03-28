@@ -15,7 +15,7 @@ class SplashScreen extends StatelessWidget {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is Authenticated) {
-            context.goNamed(AppRouteEnum.dashboard.name);
+            context.goNamed(AppRouteEnum.meetChat.name);
           }
         },
         builder: (context, state) => const SignInScreen(),

@@ -12,15 +12,12 @@ import 'package:flutter/widgets.dart';
 class $AssetsImageGen {
   const $AssetsImageGen();
 
-  /// File path: assets/image/.gitkeep
-  String get gitkeep => 'assets/image/.gitkeep';
-
   /// File path: assets/image/onboarding.jpg
   AssetGenImage get onboarding =>
       const AssetGenImage('assets/image/onboarding.jpg');
 
   /// List of all assets
-  List<dynamic> get values => [gitkeep, onboarding];
+  List<AssetGenImage> get values => [onboarding];
 }
 
 class Assets {
