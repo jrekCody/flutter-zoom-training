@@ -39,10 +39,11 @@ class MyApp extends StatelessWidget {
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Zoom',
-          theme: ThemeData.dark(
+          theme: ThemeData(
+            brightness: Brightness.dark,
+            fontFamily: 'Lato',
             useMaterial3: true,
-          ).copyWith(
-              scaffoldBackgroundColor: const Color.fromRGBO(36, 36, 36, 1)),
+          ),
           routerConfig: AppRouteConfig.routeConfig,
         ),
       ),
