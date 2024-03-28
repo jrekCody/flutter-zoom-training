@@ -13,27 +13,32 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        destinations: const [
-          NavigationDestination(
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color(0xff1a1a1a),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        unselectedFontSize: 14,
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
             icon: Icon(Icons.comment_bank),
             label: 'Meet & Chat',
           ),
-          NavigationDestination(
+          BottomNavigationBarItem(
             icon: Icon(Icons.lock_clock),
             label: 'Meetings',
           ),
-          NavigationDestination(
+          BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
             label: 'Contacts',
           ),
-          NavigationDestination(
+          BottomNavigationBarItem(
             icon: Icon(Icons.settings_outlined),
             label: 'Settings',
           ),
         ],
-        selectedIndex: navigationShell.currentIndex,
-        onDestinationSelected: (index) => _onDestinationSelected(
+        currentIndex: navigationShell.currentIndex,
+        onTap: (index) => _onDestinationSelected(
           context,
           index,
         ),
