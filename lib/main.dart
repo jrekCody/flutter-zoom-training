@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Zoom',
           theme: ThemeData(
             brightness: Brightness.dark,
+            scaffoldBackgroundColor: const Color(0xff242424),
             fontFamily: 'Lato',
             useMaterial3: true,
           ),
