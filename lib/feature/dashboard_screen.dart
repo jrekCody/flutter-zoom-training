@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom/utils/string_util.dart';
 import 'package:go_router/go_router.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -22,19 +23,19 @@ class DashboardScreen extends StatelessWidget {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.comment_bank),
-            label: 'Meet & Chat',
+            label: StringUtil.meetChat,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.lock_clock),
-            label: 'Meetings',
+            label: StringUtil.meeting,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
-            label: 'Contacts',
+            label: StringUtil.contacts,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings_outlined),
-            label: 'Settings',
+            label: StringUtil.settings,
           ),
         ],
         currentIndex: navigationShell.currentIndex,

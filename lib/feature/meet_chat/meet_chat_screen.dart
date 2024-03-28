@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom/utils/string_util.dart';
 
 import '../../widgets/zoom_feature_button_widget.dart';
 
@@ -9,7 +10,7 @@ class MeetChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Meet & Chat'),
+          title: const Text(StringUtil.meetChat),
           elevation: 0,
         ),
         body: Column(
@@ -19,38 +20,40 @@ class MeetChatScreen extends StatelessWidget {
               children: [
                 ZoomFeatureButtonWidget(
                   icon: Icons.videocam,
-                  label: 'New Meeting',
+                  label: StringUtil.newMeeting,
                   onPressed: () {},
                 ),
                 ZoomFeatureButtonWidget(
                   icon: Icons.add_box_rounded,
-                  label: 'Join Meeting',
+                  label: StringUtil.joinMeeting,
                   onPressed: () {},
                 ),
                 ZoomFeatureButtonWidget(
                   icon: Icons.add_box_rounded,
-                  label: 'Schedule',
+                  label: StringUtil.schedule,
                   onPressed: () {},
                 ),
                 ZoomFeatureButtonWidget(
                   icon: Icons.add_box_rounded,
-                  label: 'Share Screen',
+                  label: StringUtil.shareScreen,
                   onPressed: () {},
                 ),
               ],
             ),
-            const Expanded(
-              child: Center(
-                child: Text(
-                  'Create/Join Meetings with just a click!',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
+            Expanded(
+              child: _buildCreateJoinMeetingLabel(),
             ),
           ],
         ));
   }
+
+  Widget _buildCreateJoinMeetingLabel() => const Center(
+        child: Text(
+          StringUtil.createJoinMeeting,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
+      );
 }
