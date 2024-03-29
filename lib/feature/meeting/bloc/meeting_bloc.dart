@@ -29,6 +29,7 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
     ShowMeetingHistory event,
     Emitter<MeetingState> emit,
   ) async {
+    emit(state.copyWith(isFetchingMeeting: true));
     final mapper = MeetingMapper();
     final user = authRepository.currentUser();
     if (user != null) {
@@ -47,7 +48,10 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
     MeetingHistoryLoaded event,
     Emitter<MeetingState> emit,
   ) {
-    emit(state.copyWith(meeting: event.streamMeeting));
+    emit(state.copyWith(
+      meeting: event.streamMeeting,
+      isFetchingMeeting: false,
+    ));
   }
 
   @override

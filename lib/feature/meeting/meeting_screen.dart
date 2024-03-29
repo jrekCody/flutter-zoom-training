@@ -16,6 +16,11 @@ class MeetingScreen extends StatelessWidget {
         ),
         body: BlocBuilder<MeetingBloc, MeetingState>(
           builder: (context, state) {
+            if (state.isFetchingMeeting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
             if (state.meeting.isNotEmpty) {
               return ListView.separated(
                 itemCount: state.meeting.length,
