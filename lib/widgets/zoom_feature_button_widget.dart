@@ -25,17 +25,20 @@ class ZoomFeatureButtonWidget extends StatelessWidget {
 
   Widget _buildFeatureButton() => Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Container(
-          decoration: BoxDecoration(
-            color: const Color(0xff0E72EC),
-            borderRadius: BorderRadius.circular(16),
-          ),
-          width: 60,
-          height: 60,
-          child: Icon(
-            icon,
-            color: Colors.white,
-            size: 30,
+        child: GestureDetector(
+          onTap: onPressed,
+          child: Container(
+            decoration: BoxDecoration(
+              color: const Color(0xff0E72EC),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            width: 60,
+            height: 60,
+            child: Icon(
+              icon,
+              color: Colors.white,
+              size: 30,
+            ),
           ),
         ),
       );
