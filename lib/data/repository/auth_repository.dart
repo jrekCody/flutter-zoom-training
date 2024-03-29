@@ -4,4 +4,6 @@ abstract class AuthRepository {
   Future<UserCredential> signInWithGoogle();
 
   Stream<User?> userAuthChanges();
+
+  User? currentUser();
 }

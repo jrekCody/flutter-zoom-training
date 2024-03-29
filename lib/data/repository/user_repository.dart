@@ -5,4 +5,9 @@ abstract class UserRepository {
     required String name,
     required String photo,
   });
+
+  Future<void> saveUserMeetingHistory({
+    required String roomName,
+    required String id,
+  });
 }

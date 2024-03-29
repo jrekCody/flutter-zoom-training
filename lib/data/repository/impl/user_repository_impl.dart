@@ -27,4 +27,19 @@ class UserRepositoryImpl implements UserRepository {
         .doc(uid)
         .set(userMap);
   }
+
+  @override
+  Future<void> saveUserMeetingHistory({
+    required String roomName,
+    required String id,
+  }) async {
+    await firebaseFirestore
+        .collection(FirebaseCollections.userCollection)
+        .doc(id)
+        .collection(FirebaseCollections.meetingCollection)
+        .add({
+      FirebaseFields.roomName: roomName,
+      FirebaseFields.createdAt: Timestamp.now(),
+    });
+  }
 }

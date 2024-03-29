@@ -885,6 +885,8 @@ PODS:
     - nanopb (< 2.30911.0, >= 2.30908.0)
   - FirebaseSharedSwift (10.23.0)
   - Flutter (1.0.0)
+  - Giphy (2.2.4):
+    - libwebp
   - google_sign_in_ios (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -997,7 +999,26 @@ PODS:
     - AppAuth/Core (~> 1.7)
     - GTMSessionFetcher/Core (< 4.0, >= 3.3)
   - GTMSessionFetcher/Core (3.3.2)
+  - jitsi_meet_flutter_sdk (0.2.2):
+    - Flutter
+    - JitsiMeetSDK (= 9.0.2)
+  - JitsiMeetSDK (9.0.2):
+    - Giphy (= 2.2.4)
+    - JitsiWebRTC (~> 118.0)
+  - JitsiWebRTC (118.0.0)
   - leveldb-library (1.22.4)
+  - libwebp (1.3.2):
+    - libwebp/demux (= 1.3.2)
+    - libwebp/mux (= 1.3.2)
+    - libwebp/sharpyuv (= 1.3.2)
+    - libwebp/webp (= 1.3.2)
+  - libwebp/demux (1.3.2):
+    - libwebp/webp
+  - libwebp/mux (1.3.2):
+    - libwebp/demux
+  - libwebp/sharpyuv (1.3.2)
+  - libwebp/webp (1.3.2):
+    - libwebp/sharpyuv
   - nanopb (2.30909.1):
     - nanopb/decode (= 2.30909.1)
     - nanopb/encode (= 2.30909.1)
@@ -1012,6 +1033,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/darwin`)
+  - jitsi_meet_flutter_sdk (from `.symlinks/plugins/jitsi_meet_flutter_sdk/ios`)
 
 SPEC REPOS:
   trunk:
@@ -1027,13 +1049,17 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseFirestoreInternal
     - FirebaseSharedSwift
+    - Giphy
     - GoogleSignIn
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
     - GTMAppAuth
     - GTMSessionFetcher
+    - JitsiMeetSDK
+    - JitsiWebRTC
     - leveldb-library
+    - libwebp
     - nanopb
     - PromisesObjC
     - RecaptchaInterop
@@ -1049,6 +1075,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   google_sign_in_ios:
     :path: ".symlinks/plugins/google_sign_in_ios/darwin"
+  jitsi_meet_flutter_sdk:
+    :path: ".symlinks/plugins/jitsi_meet_flutter_sdk/ios"
 
 SPEC CHECKSUMS:
   abseil: ebec4f56469dd7ce9ab08683c0319a68aa0ad86e
@@ -1067,6 +1095,7 @@ SPEC CHECKSUMS:
   FirebaseFirestoreInternal: 627b23f682c1c2aad38ba1345ed3ca6574c5a89c
   FirebaseSharedSwift: c92645b392db3c41a83a0aa967de16f8bad25568
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  Giphy: 6b5f6986c8df4f71e01a8ef86595f426b3439fb5
   google_sign_in_ios: 989eea5abe94af62050782714daf920be883d4a2
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
   GoogleUtilities: d053d902a8edaa9904e1bd00c37535385b8ed152
@@ -1074,11 +1103,15 @@ SPEC CHECKSUMS:
   gRPC-Core: 6ec9002832e1e22c5bb8c54994b050b0ee4205c6
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 0e876eea9782ec6462e91ab872711c357322c94f
+  jitsi_meet_flutter_sdk: 16277747c45e403ca20557cf9cdcb6e760335b04
+  JitsiMeetSDK: 90076e4c83732332d9b2a01192951673679e5031
+  JitsiWebRTC: 3a41671ef65a51d7204323814b055a2690b921c7
   leveldb-library: 06a69cc7582d64b29424a63e085e683cc188230a
+  libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
+PODFILE CHECKSUM: f6e9bbe1c611753388eef015187d0d762163292d
 
 COCOAPODS: 1.15.2
