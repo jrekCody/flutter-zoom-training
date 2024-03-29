@@ -10,6 +10,7 @@ import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
 
 import 'data/repository/impl/auth_repository_impl.dart';
 import 'feature/auth/sign_in/bloc/auth_bloc.dart';
+import 'feature/meeting/bloc/meeting_bloc.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -37,10 +38,25 @@ class MyApp extends StatelessWidget {
           create: (context) => JitsiRepositoryImpl(jitsiMeet: JitsiMeet()),
         ),
       ],
-      child: BlocProvider(
-        create: (context) => AuthBloc(
-            authRepository: RepositoryProvider.of<AuthRepositoryImpl>(context),
-            userRepository: RepositoryProvider.of<UserRepositoryImpl>(context)),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) =>
+                AuthBloc(
+                    authRepository: RepositoryProvider.of<AuthRepositoryImpl>(
+                        context),
+                    userRepository: RepositoryProvider.of<UserRepositoryImpl>(
+                        context)),
+          ),
+          BlocProvider(
+            create: (context) =>
+                MeetingBloc(
+                    authRepository: RepositoryProvider.of<AuthRepositoryImpl>(
+                        context),
+                    userRepository: RepositoryProvider.of<UserRepositoryImpl>(
+                        context)),
+          ),
+        ],
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Zoom',
