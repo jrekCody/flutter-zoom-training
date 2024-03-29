@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom/app_route_config.dart';
+import 'package:flutter_zoom/data/model/mapper/meeting_mapper.dart';
 import 'package:flutter_zoom/data/repository/impl/jitsi_repository_impl.dart';
 import 'package:flutter_zoom/data/repository/impl/user_repository_impl.dart';
 import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
@@ -41,20 +42,19 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) =>
-                AuthBloc(
-                    authRepository: RepositoryProvider.of<AuthRepositoryImpl>(
-                        context),
-                    userRepository: RepositoryProvider.of<UserRepositoryImpl>(
-                        context)),
+            create: (context) => AuthBloc(
+                authRepository:
+                    RepositoryProvider.of<AuthRepositoryImpl>(context),
+                userRepository:
+                    RepositoryProvider.of<UserRepositoryImpl>(context)),
           ),
           BlocProvider(
-            create: (context) =>
-                MeetingBloc(
-                    authRepository: RepositoryProvider.of<AuthRepositoryImpl>(
-                        context),
-                    userRepository: RepositoryProvider.of<UserRepositoryImpl>(
-                        context)),
+            create: (context) => MeetingBloc(
+                authRepository:
+                    RepositoryProvider.of<AuthRepositoryImpl>(context),
+                userRepository:
+                    RepositoryProvider.of<UserRepositoryImpl>(context),
+                meetingMapper: MeetingMapper()),
           ),
         ],
         child: MaterialApp.router(

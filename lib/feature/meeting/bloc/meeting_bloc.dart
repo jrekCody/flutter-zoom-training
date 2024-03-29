@@ -14,12 +14,14 @@ part 'meeting_state.dart';
 class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
   final UserRepository userRepository;
   final AuthRepository authRepository;
+  final MeetingMapper meetingMapper;
 
   late StreamSubscription _streamMeetingHistory;
 
   MeetingBloc({
     required this.userRepository,
     required this.authRepository,
+    required this.meetingMapper,
   }) : super(const MeetingState()) {
     on<ShowMeetingHistory>(_onShowMeetingHistory);
     on<MeetingHistoryLoaded>(_onMeetingHistoryLoaded);
@@ -30,7 +32,6 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
     Emitter<MeetingState> emit,
   ) async {
     emit(state.copyWith(isFetchingMeeting: true));
-    final mapper = MeetingMapper();
     final user = authRepository.currentUser();
     if (user != null) {
       final streamMeeting = userRepository.getUserMeetingHistory(
@@ -38,7 +39,7 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
       );
 
       _streamMeetingHistory = streamMeeting.listen((event) async {
-        final meetings = mapper.responseToDomainList(event);
+        final meetings = meetingMapper.responseToDomainList(event);
         add(MeetingHistoryLoaded(streamMeeting: meetings));
       });
     }

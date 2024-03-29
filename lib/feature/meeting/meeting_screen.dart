@@ -20,8 +20,7 @@ class MeetingScreen extends StatelessWidget {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            }
-            if (state.meeting.isNotEmpty) {
+            } else if (state.meeting.isNotEmpty) {
               return ListView.separated(
                 itemCount: state.meeting.length,
                 itemBuilder: (context, index) {
