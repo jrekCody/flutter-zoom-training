@@ -26,9 +26,9 @@ class MeetingScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final rooms = state.meeting[index];
                   return ListTile(
-                    title: Text('Room Name: ${rooms.roomName}'),
+                    title: Text('${StringUtil.roomName} ${rooms.roomName}'),
                     subtitle: Text(
-                        'Joined on ${DateTimeUtil.formattedDateYMMMd(rooms.createdAt)}'),
+                        '${StringUtil.joinedOn} ${DateTimeUtil.formattedDateYMMMd(rooms.createdAt)}'),
                   );
                 },
                 separatorBuilder: (_, __) => const Divider(
