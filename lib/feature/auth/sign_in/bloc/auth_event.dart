@@ -23,3 +23,11 @@ final class AuthUpdatedUser extends AuthEvent {
   @override
   List<Object?> get props => [user];
 }
+
+final class AuthSignOut extends AuthEvent {
+  const AuthSignOut();
+}
+
+final class UserUnAuthenticated extends AuthEvent {
+  const UserUnAuthenticated();
+}
