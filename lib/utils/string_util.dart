@@ -19,4 +19,5 @@ final class StringUtil {
   static const String joinedOn = 'Joined on';
   static const String muteAudio = 'Mute Audio';
   static const String offVideo = 'Turn off video';
+  static const String signOut = 'Sign Out';
 }
