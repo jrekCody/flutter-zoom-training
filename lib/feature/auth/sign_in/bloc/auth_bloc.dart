@@ -23,7 +23,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthUserChanged>(_onAuthUserChanged);
     on<AuthUpdatedUser>(_onAuthUpdatedUser);
     on<AuthSignOut>(_onAuthSignOut);
-    on<UserUnAuthenticated>(_onUserUnAuthenticated);
   }
 
   late StreamSubscription _streamUserAuthChanged;
@@ -58,8 +57,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     _streamUserAuthChanged = streamUser.listen((event) {
       if (event != null) {
         add(AuthUpdatedUser(user: event));
-      } else {
-        add(const UserUnAuthenticated());
       }
     });
   }
@@ -76,13 +73,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     await authRepository.signOut();
-    emit(const UnAuthenticated());
-  }
-
-  FutureOr<void> _onUserUnAuthenticated(
-    UserUnAuthenticated event,
-    Emitter<AuthState> emit,
-  ) {
     emit(const UnAuthenticated());
   }
 
