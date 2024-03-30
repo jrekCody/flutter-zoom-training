@@ -17,6 +17,7 @@ class MeetingModel extends Equatable {
 
   MeetingModel copyWith({
     String? roomName,
+    DateTime? createdAt,
   }) {
     return MeetingModel(
       roomName: roomName ?? this.roomName,
