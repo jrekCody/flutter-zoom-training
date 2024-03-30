@@ -6,16 +6,16 @@ import 'package:flutter_zoom/data/repository/impl/user_repository_impl.dart';
 import 'package:flutter_zoom/utils/extension/string_extension.dart';
 import 'package:flutter_zoom/utils/string_util.dart';
 
-import '../../widgets/zoom_feature_button_widget.dart';
-import 'bloc/meet_bloc.dart';
+import '../../../widgets/zoom_feature_button_widget.dart';
+import '../new_meeting/bloc/new_meeting_bloc.dart';
 
-class MeetChatScreen extends StatelessWidget {
-  const MeetChatScreen({super.key});
+class NewMeetingScreen extends StatelessWidget {
+  const NewMeetingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MeetBloc(
+      create: (context) => NewMeetingBloc(
           jitsiRepository: RepositoryProvider.of<JitsiRepositoryImpl>(context),
           authRepository: RepositoryProvider.of<AuthRepositoryImpl>(context),
           userRepository: RepositoryProvider.of<UserRepositoryImpl>(context)),
@@ -29,12 +29,12 @@ class MeetChatScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  BlocBuilder<MeetBloc, MeetState>(
+                  BlocBuilder<NewMeetingBloc, NewMeetingState>(
                     builder: (context, state) {
                       return ZoomFeatureButtonWidget(
                         icon: Icons.videocam,
                         label: StringUtil.newMeeting,
-                        onPressed: () => context.read<MeetBloc>().add(
+                        onPressed: () => context.read<NewMeetingBloc>().add(
                               MeetCreateJoin(
                                 roomName: StringExtensions.getRandomString(5),
                               ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom/feature/auth/sign_in/sign_in_screen.dart';
 import 'package:flutter_zoom/feature/contacts/contacts_screen.dart';
-import 'package:flutter_zoom/feature/meet_chat/meet_chat_screen.dart';
+import 'package:flutter_zoom/feature/meet_chat/new_meeting/new_meeting_screen.dart';
 import 'package:flutter_zoom/feature/meeting/meeting_screen.dart';
 import 'package:flutter_zoom/feature/settings/settings_screen.dart';
 import 'package:flutter_zoom/feature/splash_screen.dart';
@@ -59,7 +59,7 @@ final class AppRouteConfig {
       GoRoute(
         name: AppRouteEnum.meetChat.name,
         path: AppRouteEnum.meetChat.path,
-        builder: (_, __) => const MeetChatScreen(),
+        builder: (_, __) => const NewMeetingScreen(),
       ),
     ],
   );
