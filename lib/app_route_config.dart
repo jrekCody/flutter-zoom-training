@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom/feature/auth/sign_in/sign_in_screen.dart';
 import 'package:flutter_zoom/feature/contacts/contacts_screen.dart';
+import 'package:flutter_zoom/feature/meet_chat/join_meeting/join_meeting_screen.dart';
 import 'package:flutter_zoom/feature/meet_chat/new_meeting/new_meeting_screen.dart';
 import 'package:flutter_zoom/feature/meeting/meeting_screen.dart';
 import 'package:flutter_zoom/feature/settings/settings_screen.dart';
@@ -33,7 +34,6 @@ final class AppRouteConfig {
         path: AppRouteEnum.signIn.path,
         builder: (context, state) => const SignInScreen(),
       ),
-
       StatefulShellRoute.indexedStack(
         builder: (
           context,
@@ -57,10 +57,16 @@ final class AppRouteConfig {
     navigatorKey: _shellNavigatorKey,
     routes: [
       GoRoute(
-        name: AppRouteEnum.newMeet.name,
-        path: AppRouteEnum.newMeet.path,
-        builder: (_, __) => const NewMeetingScreen(),
-      ),
+          name: AppRouteEnum.newMeet.name,
+          path: AppRouteEnum.newMeet.path,
+          builder: (_, __) => const NewMeetingScreen(),
+          routes: [
+            GoRoute(
+              name: AppRouteEnum.joinMeet.name,
+              path: AppRouteEnum.joinMeet.path,
+              builder: (_, __) => const JoinMeetingScreen(),
+            ),
+          ]),
     ],
   );
 

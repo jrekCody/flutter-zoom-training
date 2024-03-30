@@ -11,6 +11,10 @@ enum AppRouteEnum {
     name: 'newMeet',
     path: '/newMeet',
   ),
+  joinMeet(
+    name: 'joinMeet',
+    path: 'joinMeet',
+  ),
   meetings(
     name: 'meetings',
     path: '/meetings',
