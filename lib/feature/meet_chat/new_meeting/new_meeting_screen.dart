@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom/data/repository/impl/auth_repository_impl.dart';
 import 'package:flutter_zoom/data/repository/impl/jitsi_repository_impl.dart';
 import 'package:flutter_zoom/data/repository/impl/user_repository_impl.dart';
+import 'package:flutter_zoom/utils/enum/app_route_enum.dart';
 import 'package:flutter_zoom/utils/extension/string_extension.dart';
 import 'package:flutter_zoom/utils/string_util.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../widgets/zoom_feature_button_widget.dart';
 import '../new_meeting/bloc/new_meeting_bloc.dart';
@@ -45,7 +47,9 @@ class NewMeetingScreen extends StatelessWidget {
                   ZoomFeatureButtonWidget(
                     icon: Icons.add_box_rounded,
                     label: StringUtil.joinMeeting,
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushNamed(AppRouteEnum.joinMeet.name);
+                    },
                   ),
                   ZoomFeatureButtonWidget(
                     icon: Icons.add_box_rounded,
