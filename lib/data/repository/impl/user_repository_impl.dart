@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_zoom/data/constant/firebase_collections.dart';
 import 'package:flutter_zoom/data/constant/firebase_fields.dart';
+import 'package:flutter_zoom/data/model/document/meeting_document.dart';
+import 'package:flutter_zoom/data/model/response/meeting_response.dart';
 import 'package:flutter_zoom/data/repository/user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
@@ -40,6 +42,27 @@ class UserRepositoryImpl implements UserRepository {
         .add({
       FirebaseFields.roomName: roomName,
       FirebaseFields.createdAt: Timestamp.now(),
+    });
+  }
+
+  @override
+  Stream<List<MeetingResponse>> getUserMeetingHistory({
+    required String userId,
+  }) {
+    final meetings = firebaseFirestore
+        .collection(FirebaseCollections.userCollection)
+        .doc(userId)
+        .collection(FirebaseCollections.meetingCollection)
+        .withConverter(
+            fromFirestore: MeetingDocument.fromFirestore,
+            toFirestore: (meeting, _) => meeting.toMap())
+        .snapshots();
+
+    return meetings.asyncMap((event) {
+      final docs = event.docs;
+      return docs
+          .map((item) => MeetingResponse.fromDocument(item.data()))
+          .toList();
     });
   }
 }
