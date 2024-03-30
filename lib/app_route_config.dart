@@ -57,8 +57,8 @@ final class AppRouteConfig {
     navigatorKey: _shellNavigatorKey,
     routes: [
       GoRoute(
-        name: AppRouteEnum.meetChat.name,
-        path: AppRouteEnum.meetChat.path,
+        name: AppRouteEnum.newMeet.name,
+        path: AppRouteEnum.newMeet.path,
         builder: (_, __) => const NewMeetingScreen(),
       ),
     ],
