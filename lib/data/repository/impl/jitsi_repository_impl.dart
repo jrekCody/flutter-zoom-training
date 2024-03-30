@@ -10,15 +10,22 @@ class JitsiRepositoryImpl implements JitsiRepository {
   @override
   Future<void> createJoinMeeting(
     String roomName,
-    User user,
-  ) async {
+    User user, {
+    String userName = '',
+    bool isMuted = true,
+    bool isVideoOff = true,
+  }) async {
     final options = JitsiMeetConferenceOptions(
       room: roomName,
       userInfo: JitsiMeetUserInfo(
-        displayName: user.displayName,
+        displayName: userName,
         email: user.email,
         avatar: user.photoURL,
       ),
+      configOverrides: {
+        'startWithAudioMuted': isMuted,
+        'startWithVideoMuted': isVideoOff,
+      },
     );
     await jitsiMeet.join(options);
   }
