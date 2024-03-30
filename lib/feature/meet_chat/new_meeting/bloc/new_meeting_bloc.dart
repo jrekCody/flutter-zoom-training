@@ -34,6 +34,7 @@ class NewMeetingBloc extends Bloc<NewMeetingEvent, NewMeetingState> {
         await jitsiRepository.createJoinMeeting(
           event.roomName,
           user,
+          userName: user.displayName!
         );
         await userRepository.saveUserMeetingHistory(
           roomName: event.roomName,
