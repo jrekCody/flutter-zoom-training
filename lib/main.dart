@@ -11,6 +11,7 @@ import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
 
 import 'data/repository/impl/auth_repository_impl.dart';
 import 'feature/auth/sign_in/bloc/auth_bloc.dart';
+import 'feature/meet_chat/join_meeting/bloc/join_meeting_bloc.dart';
 import 'feature/meeting/bloc/meeting_bloc.dart';
 import 'firebase_options.dart';
 
@@ -55,6 +56,14 @@ class MyApp extends StatelessWidget {
                 userRepository:
                     RepositoryProvider.of<UserRepositoryImpl>(context),
                 meetingMapper: MeetingMapper()),
+          ),
+          BlocProvider(
+            create: (context) => JoinMeetingBloc(
+              authRepository:
+                  RepositoryProvider.of<AuthRepositoryImpl>(context),
+              jitsiRepository:
+                  RepositoryProvider.of<JitsiRepositoryImpl>(context),
+            ),
           ),
         ],
         child: MaterialApp.router(
