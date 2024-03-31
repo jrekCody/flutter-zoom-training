@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom/utils/color_util.dart';
 import 'package:flutter_zoom/utils/string_util.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,7 +16,7 @@ class DashboardScreen extends StatelessWidget {
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xff1a1a1a),
+        backgroundColor: ColorUtil.blackColor,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
         unselectedFontSize: 14,

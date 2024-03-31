@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom/utils/color_util.dart';
 
 class ZoomControllerSwitchWidget extends StatelessWidget {
   const ZoomControllerSwitchWidget({
@@ -16,7 +17,7 @@ class ZoomControllerSwitchWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      color: const Color(0xff2e2e2e),
+      color: ColorUtil.lightGreyColor,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Row(
