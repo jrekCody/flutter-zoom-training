@@ -7,8 +7,8 @@ class ContactsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Contacts'),
+          title: const Text('Contacts'),
         ),
-        body: Center(child: Text('Contacts')));
+        body: const Center(child: Text('Contacts')));
   }
 }
