@@ -7,6 +7,8 @@ import 'package:flutter_zoom/app_route_config.dart';
 import 'package:flutter_zoom/data/model/mapper/meeting_mapper.dart';
 import 'package:flutter_zoom/data/repository/impl/jitsi_repository_impl.dart';
 import 'package:flutter_zoom/data/repository/impl/user_repository_impl.dart';
+import 'package:flutter_zoom/di/di.dart';
+import 'package:injectable/injectable.dart';
 import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
 
 import 'data/repository/impl/auth_repository_impl.dart';
@@ -20,6 +22,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  configureInjection(Environment.dev);
   runApp(const MyApp());
 }
 

@@ -1,6 +1,8 @@
 import 'package:flutter_zoom/data/model/meeting_model.dart';
 import 'package:flutter_zoom/data/model/response/meeting_response.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 final class MeetingMapper with MeetingMixin {
   MeetingModel responseToDomain(MeetingResponse response) {
     return mapMeeting(response);

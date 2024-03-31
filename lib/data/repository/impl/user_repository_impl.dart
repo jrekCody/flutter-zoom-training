@@ -4,7 +4,9 @@ import 'package:flutter_zoom/data/constant/firebase_fields.dart';
 import 'package:flutter_zoom/data/model/document/meeting_document.dart';
 import 'package:flutter_zoom/data/model/response/meeting_response.dart';
 import 'package:flutter_zoom/data/repository/user_repository.dart';
+import 'package:injectable/injectable.dart';
 
+@Singleton(as: UserRepository)
 class UserRepositoryImpl implements UserRepository {
   final FirebaseFirestore firebaseFirestore;
 

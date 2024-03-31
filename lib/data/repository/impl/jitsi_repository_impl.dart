@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_zoom/data/repository/jitsi_repository.dart';
+import 'package:injectable/injectable.dart';
 import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
 
+@Singleton(as: JitsiRepository)
 class JitsiRepositoryImpl implements JitsiRepository {
   final JitsiMeet jitsiMeet;
 

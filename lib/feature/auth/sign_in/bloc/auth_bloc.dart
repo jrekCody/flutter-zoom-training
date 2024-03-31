@@ -6,11 +6,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom/data/repository/auth_repository.dart';
 import 'package:flutter_zoom/data/repository/user_repository.dart';
+import 'package:injectable/injectable.dart';
 
 part 'auth_event.dart';
 
 part 'auth_state.dart';
 
+@injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
   final UserRepository userRepository;

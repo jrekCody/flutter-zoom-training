@@ -6,11 +6,13 @@ import 'package:flutter_zoom/data/model/mapper/meeting_mapper.dart';
 import 'package:flutter_zoom/data/model/meeting_model.dart';
 import 'package:flutter_zoom/data/repository/auth_repository.dart';
 import 'package:flutter_zoom/data/repository/user_repository.dart';
+import 'package:injectable/injectable.dart';
 
 part 'meeting_event.dart';
 
 part 'meeting_state.dart';
 
+@injectable
 class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
   final UserRepository userRepository;
   final AuthRepository authRepository;
