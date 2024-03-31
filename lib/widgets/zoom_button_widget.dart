@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom/utils/color_util.dart';
 
 class ZoomButtonWidget extends StatelessWidget {
   final String label;
@@ -15,7 +16,7 @@ class ZoomButtonWidget extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xff0E72EC),
+          backgroundColor: ColorUtil.blueColor,
           minimumSize: const Size(
             double.infinity,
             50,

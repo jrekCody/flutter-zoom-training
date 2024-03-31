@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom/utils/color_util.dart';
 
 class ZoomTextFormFieldWidget extends StatelessWidget {
   const ZoomTextFormFieldWidget({
@@ -16,7 +17,7 @@ class ZoomTextFormFieldWidget extends StatelessWidget {
       maxLines: 1,
       textAlign: TextAlign.center,
       decoration: InputDecoration(
-        fillColor: const Color(0xff2e2e2e),
+        fillColor: ColorUtil.lightGreyColor,
         filled: true,
         border: InputBorder.none,
         hintText: hint,
