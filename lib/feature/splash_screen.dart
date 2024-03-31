@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_zoom/di/di.dart';
 import 'package:flutter_zoom/feature/auth/sign_in/bloc/auth_bloc.dart';
 import 'package:flutter_zoom/feature/auth/sign_in/sign_in_screen.dart';
 import 'package:flutter_zoom/utils/enum/app_route_enum.dart';
@@ -10,15 +11,20 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<AuthBloc>().add(const AuthUserChanged());
-    return Scaffold(
-      body: BlocConsumer<AuthBloc, AuthState>(
-        listener: (context, state) {
-          if (state is Authenticated) {
-            context.goNamed(AppRouteEnum.newMeet.name);
-          }
-        },
-        builder: (context, state) => const SignInScreen(),
+    return BlocProvider(
+      create: (context) => getIt<AuthBloc>()
+        ..add(
+          const AuthUserChanged(),
+        ),
+      child: Scaffold(
+        body: BlocConsumer<AuthBloc, AuthState>(
+          listener: (context, state) {
+            if (state is Authenticated) {
+              context.goNamed(AppRouteEnum.newMeet.name);
+            }
+          },
+          builder: (context, state) => const SignInScreen(),
+        ),
       ),
     );
   }

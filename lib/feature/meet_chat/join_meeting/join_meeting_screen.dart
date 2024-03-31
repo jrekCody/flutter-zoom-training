@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_zoom/di/di.dart';
 import 'package:flutter_zoom/utils/string_util.dart';
 import 'package:flutter_zoom/widgets/zoom_controller_switch_widget.dart';
 import 'package:flutter_zoom/widgets/zoom_text_form_field_widget.dart';
@@ -11,20 +12,25 @@ class JoinMeetingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<JoinMeetingBloc>().add(const JoinMeetingStarted());
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(StringUtil.joinMeeting),
-      ),
-      body: Column(
-        children: [
-          _buildRoomNameWidget(),
-          _buildUserNameWidget(),
-          _buildJoinButtonWidget(),
-          _buildMuteAudioWidget(),
-          const SizedBox(height: 1),
-          _buildVideoTurnOffWidget(),
-        ],
+    return BlocProvider(
+      create: (context) => getIt<JoinMeetingBloc>()
+        ..add(
+          const JoinMeetingStarted(),
+        ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(StringUtil.joinMeeting),
+        ),
+        body: Column(
+          children: [
+            _buildRoomNameWidget(),
+            _buildUserNameWidget(),
+            _buildJoinButtonWidget(),
+            _buildMuteAudioWidget(),
+            const SizedBox(height: 1),
+            _buildVideoTurnOffWidget(),
+          ],
+        ),
       ),
     );
   }
