@@ -1,7 +1,11 @@
 final class StringUtil {
   StringUtil._();
 
+  // app constant
   static const String appName = 'Flutter Zoom';
+  static const String fontFamily = 'Lato';
+
+  // app pre-defined constants
   static const String startMeeting = 'Start or join a meeting';
   static const String googleSignIn = 'Google Sign In';
   static const String meetChat = 'Meet & Chat';
@@ -23,5 +27,7 @@ final class StringUtil {
   static const String signOut = 'Sign Out';
   static const String noMeetingHistory = 'No meeting history';
 
-  static const String fontFamily = 'Lato';
+  // jitsi config string constants
+  static const String jitsiConfigStartWithAudioMuted = 'startWithAudioMuted';
+  static const String jitsiConfigStartWithVideoMuted = 'startWithVideoMuted';
 }

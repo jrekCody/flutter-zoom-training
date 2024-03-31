@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_zoom/data/repository/jitsi_repository.dart';
+import 'package:flutter_zoom/utils/string_util.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
 
@@ -25,8 +26,8 @@ class JitsiRepositoryImpl implements JitsiRepository {
         avatar: user.photoURL,
       ),
       configOverrides: {
-        'startWithAudioMuted': isMuted,
-        'startWithVideoMuted': isVideoOff,
+        StringUtil.jitsiConfigStartWithAudioMuted: isMuted,
+        StringUtil.jitsiConfigStartWithVideoMuted: isVideoOff,
       },
     );
     await jitsiMeet.join(options);
