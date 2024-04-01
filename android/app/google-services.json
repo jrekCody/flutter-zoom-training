@@ -37,6 +37,13 @@
             {
               "client_id": "813695073093-12ccriel8elfldvmp5rlinbdme8oc3rg.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "813695073093-92psv1iu20vp574j6c2vhvk18sdetjh0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterZoom"
+              }
             }
           ]
         }
