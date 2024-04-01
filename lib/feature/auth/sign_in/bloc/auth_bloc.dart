@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_zoom/data/model/request/user_request.dart';
 import 'package:flutter_zoom/data/repository/auth_repository.dart';
 import 'package:flutter_zoom/data/repository/user_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -39,11 +40,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (user != null) {
       if (userCredential.additionalUserInfo!.isNewUser) {
         await userRepository.saveUser(
-          uid: user.uid,
-          email: user.email ?? '',
-          name: user.displayName ?? '',
-          photo: user.photoURL ?? '',
-        );
+            request: UserRequest(
+          id: user.uid,
+          email: user.email,
+          name: user.displayName,
+          photo: user.photoURL,
+        ));
       }
       emit(Authenticated(user: user));
     } else {

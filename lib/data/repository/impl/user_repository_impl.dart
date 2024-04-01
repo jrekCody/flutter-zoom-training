@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_zoom/data/constant/firebase_collections.dart';
 import 'package:flutter_zoom/data/constant/firebase_fields.dart';
 import 'package:flutter_zoom/data/model/document/meeting_document.dart';
+import 'package:flutter_zoom/data/model/document/user_document.dart';
+import 'package:flutter_zoom/data/model/request/user_request.dart';
 import 'package:flutter_zoom/data/model/response/meeting_response.dart';
 import 'package:flutter_zoom/data/repository/user_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -14,22 +16,22 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> saveUser({
-    required String uid,
-    required String email,
-    required String name,
-    required String photo,
+    required UserRequest request,
   }) async {
-    final userMap = {
-      FirebaseFields.uid: uid,
-      FirebaseFields.email: email,
-      FirebaseFields.displayName: name,
-      FirebaseFields.photoUrl: photo,
-    };
+    final user = UserDocument.defaultValue.copyWith(
+      id: request.id,
+      email: request.email,
+      name: request.name,
+      photo: request.photo,
+    );
 
     await firebaseFirestore
         .collection(FirebaseCollections.userCollection)
-        .doc(uid)
-        .set(userMap);
+        .doc(request.id)
+        .set(
+          user.toMap(),
+          SetOptions(merge: true),
+        );
   }
 
   @override

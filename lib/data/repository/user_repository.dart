@@ -1,11 +1,9 @@
+import 'package:flutter_zoom/data/model/request/user_request.dart';
 import 'package:flutter_zoom/data/model/response/meeting_response.dart';
 
 abstract class UserRepository {
   Future<void> saveUser({
-    required String uid,
-    required String email,
-    required String name,
-    required String photo,
+    required UserRequest request,
   });
 
   Future<void> saveUserMeetingHistory({
