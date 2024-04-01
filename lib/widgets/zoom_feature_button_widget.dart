@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom/utils/color_util.dart';
 
 class ZoomFeatureButtonWidget extends StatelessWidget {
   const ZoomFeatureButtonWidget({
@@ -29,7 +30,7 @@ class ZoomFeatureButtonWidget extends StatelessWidget {
           onTap: onPressed,
           child: Container(
             decoration: BoxDecoration(
-              color: const Color(0xff0E72EC),
+              color: ColorUtil.blueColor,
               borderRadius: BorderRadius.circular(16),
             ),
             width: 60,

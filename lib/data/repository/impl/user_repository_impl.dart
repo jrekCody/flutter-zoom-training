@@ -53,6 +53,7 @@ class UserRepositoryImpl implements UserRepository {
         .collection(FirebaseCollections.userCollection)
         .doc(userId)
         .collection(FirebaseCollections.meetingCollection)
+        .orderBy(FirebaseFields.createdAt, descending: true)
         .withConverter(
             fromFirestore: MeetingDocument.fromFirestore,
             toFirestore: (meeting, _) => meeting.toMap())

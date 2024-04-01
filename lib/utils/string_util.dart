@@ -1,6 +1,7 @@
 final class StringUtil {
   StringUtil._();
 
+  static const String appName = 'Flutter Zoom';
   static const String startMeeting = 'Start or join a meeting';
   static const String googleSignIn = 'Google Sign In';
   static const String meetChat = 'Meet & Chat';
@@ -11,5 +12,16 @@ final class StringUtil {
   static const String joinMeeting = 'Join Meeting';
   static const String schedule = 'Schedule';
   static const String shareScreen = 'Share Screen';
-  static const String createJoinMeeting = 'Create/Join Meetings with just a click!';
+  static const String createJoinMeeting =
+      'Create/Join Meetings with just a click!';
+  static const String roomName = 'Room Name';
+  static const String name = 'Name';
+  static const String join = 'Join';
+  static const String joinedOn = 'Joined on';
+  static const String muteAudio = 'Mute Audio';
+  static const String offVideo = 'Turn off video';
+  static const String signOut = 'Sign Out';
+  static const String noMeetingHistory = 'No meeting history';
+
+  static const String fontFamily = 'Lato';
 }

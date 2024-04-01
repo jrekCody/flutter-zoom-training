@@ -6,26 +6,26 @@ import 'package:flutter_zoom/data/repository/auth_repository.dart';
 import 'package:flutter_zoom/data/repository/jitsi_repository.dart';
 import 'package:flutter_zoom/data/repository/user_repository.dart';
 
-part 'meet_event.dart';
+part 'new_meeting_event.dart';
 
-part 'meet_state.dart';
+part 'new_meeting_state.dart';
 
-class MeetBloc extends Bloc<MeetEvent, MeetState> {
+class NewMeetingBloc extends Bloc<NewMeetingEvent, NewMeetingState> {
   final JitsiRepository jitsiRepository;
   final AuthRepository authRepository;
   final UserRepository userRepository;
 
-  MeetBloc({
+  NewMeetingBloc({
     required this.jitsiRepository,
     required this.authRepository,
     required this.userRepository,
-  }) : super(const MeetState()) {
+  }) : super(const NewMeetingState()) {
     on<MeetCreateJoin>(_onCreateMeeting);
   }
 
   FutureOr<void> _onCreateMeeting(
     MeetCreateJoin event,
-    Emitter<MeetState> emit,
+    Emitter<NewMeetingState> emit,
   ) async {
     emit(const MeetingLoading());
     try {
@@ -34,6 +34,7 @@ class MeetBloc extends Bloc<MeetEvent, MeetState> {
         await jitsiRepository.createJoinMeeting(
           event.roomName,
           user,
+          userName: user.displayName!
         );
         await userRepository.saveUserMeetingHistory(
           roomName: event.roomName,

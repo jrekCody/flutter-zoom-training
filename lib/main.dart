@@ -7,12 +7,15 @@ import 'package:flutter_zoom/app_route_config.dart';
 import 'package:flutter_zoom/data/model/mapper/meeting_mapper.dart';
 import 'package:flutter_zoom/data/repository/impl/jitsi_repository_impl.dart';
 import 'package:flutter_zoom/data/repository/impl/user_repository_impl.dart';
+import 'package:flutter_zoom/utils/string_util.dart';
 import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
 
 import 'data/repository/impl/auth_repository_impl.dart';
 import 'feature/auth/sign_in/bloc/auth_bloc.dart';
+import 'feature/meet_chat/join_meeting/bloc/join_meeting_bloc.dart';
 import 'feature/meeting/bloc/meeting_bloc.dart';
 import 'firebase_options.dart';
+import 'utils/color_util.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,14 +59,22 @@ class MyApp extends StatelessWidget {
                     RepositoryProvider.of<UserRepositoryImpl>(context),
                 meetingMapper: MeetingMapper()),
           ),
+          BlocProvider(
+            create: (context) => JoinMeetingBloc(
+              authRepository:
+                  RepositoryProvider.of<AuthRepositoryImpl>(context),
+              jitsiRepository:
+                  RepositoryProvider.of<JitsiRepositoryImpl>(context),
+            ),
+          ),
         ],
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Zoom',
+          title: StringUtil.appName,
           theme: ThemeData(
             brightness: Brightness.dark,
-            scaffoldBackgroundColor: const Color(0xff242424),
-            fontFamily: 'Lato',
+            scaffoldBackgroundColor: ColorUtil.greyColor,
+            fontFamily: StringUtil.fontFamily,
             useMaterial3: true,
           ),
           routerConfig: AppRouteConfig.routeConfig,

@@ -7,9 +7,13 @@ enum AppRouteEnum {
     name: 'signIn',
     path: '/signIn',
   ),
-  meetChat(
-    name: 'meetChat',
-    path: '/meetChat',
+  newMeet(
+    name: 'newMeet',
+    path: '/newMeet',
+  ),
+  joinMeet(
+    name: 'joinMeet',
+    path: 'joinMeet',
   ),
   meetings(
     name: 'meetings',

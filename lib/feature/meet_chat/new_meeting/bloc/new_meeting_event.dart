@@ -1,13 +1,13 @@
-part of 'meet_bloc.dart';
+part of 'new_meeting_bloc.dart';
 
-sealed class MeetEvent extends Equatable {
-  const MeetEvent();
+sealed class NewMeetingEvent extends Equatable {
+  const NewMeetingEvent();
 
   @override
   List<Object?> get props => [];
 }
 
-final class MeetCreateJoin extends MeetEvent {
+final class MeetCreateJoin extends NewMeetingEvent {
   const MeetCreateJoin({required this.roomName});
 
   final String roomName;

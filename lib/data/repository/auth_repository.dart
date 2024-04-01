@@ -6,4 +6,6 @@ abstract class AuthRepository {
   Stream<User?> userAuthChanges();
 
   User? currentUser();
+
+  Future<void> signOut();
 }
