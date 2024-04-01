@@ -3,6 +3,7 @@ import 'package:flutter_zoom/data/constant/firebase_collections.dart';
 import 'package:flutter_zoom/data/constant/firebase_fields.dart';
 import 'package:flutter_zoom/data/model/document/meeting_document.dart';
 import 'package:flutter_zoom/data/model/document/user_document.dart';
+import 'package:flutter_zoom/data/model/request/meeting_request.dart';
 import 'package:flutter_zoom/data/model/request/user_request.dart';
 import 'package:flutter_zoom/data/model/response/meeting_response.dart';
 import 'package:flutter_zoom/data/repository/user_repository.dart';
@@ -36,17 +37,19 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> saveUserMeetingHistory({
-    required String roomName,
-    required String id,
+    required MeetingRequest request,
   }) async {
+    final meeting = MeetingDocument.defaultValue.copyWith(
+      uid: request.uid,
+      roomName: request.roomName,
+      createdAt: Timestamp.now(),
+    );
+
     await firebaseFirestore
         .collection(FirebaseCollections.userCollection)
-        .doc(id)
+        .doc(request.uid)
         .collection(FirebaseCollections.meetingCollection)
-        .add({
-      FirebaseFields.roomName: roomName,
-      FirebaseFields.createdAt: Timestamp.now(),
-    });
+        .add(meeting.toMap());
   }
 
   @override
