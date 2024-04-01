@@ -4,10 +4,12 @@ import 'package:flutter_zoom/data/constant/firebase_fields.dart';
 
 final class MeetingDocument extends Equatable {
   const MeetingDocument({
+    required this.uid,
     required this.roomName,
     this.createdAt,
   });
 
+  final String uid;
   final String roomName;
   final Timestamp? createdAt;
 
@@ -20,6 +22,7 @@ final class MeetingDocument extends Equatable {
 
   factory MeetingDocument.fromMap(Map<String, dynamic> map) {
     return MeetingDocument(
+      uid: map[FirebaseFields.uid],
       roomName: map[FirebaseFields.roomName],
       createdAt: map[FirebaseFields.createdAt],
     );
@@ -27,22 +30,31 @@ final class MeetingDocument extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
+      FirebaseFields.uid: uid,
       FirebaseFields.roomName: roomName,
       FirebaseFields.createdAt: createdAt,
     };
   }
 
+  static const defaultValue = MeetingDocument(
+    uid: '',
+    roomName: '',
+  );
+
   @override
   List<Object?> get props => [
+        uid,
         roomName,
         createdAt,
       ];
 
-  MeetingDocument copyWith(
+  MeetingDocument copyWith({
+    String? uid,
     String? roomName,
     Timestamp? createdAt,
-  ) {
+  }) {
     return MeetingDocument(
+      uid: uid ?? this.uid,
       roomName: roomName ?? this.roomName,
       createdAt: createdAt ?? this.createdAt,
     );
