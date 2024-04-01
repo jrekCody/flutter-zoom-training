@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_zoom/data/model/request/meeting_request.dart';
 import 'package:flutter_zoom/data/repository/auth_repository.dart';
 import 'package:flutter_zoom/data/repository/jitsi_repository.dart';
 import 'package:flutter_zoom/data/repository/user_repository.dart';
@@ -36,11 +37,13 @@ class NewMeetingBloc extends Bloc<NewMeetingEvent, NewMeetingState> {
         await jitsiRepository.createJoinMeeting(
           event.roomName,
           user,
-          userName: user.displayName!
+          userName: user.displayName!,
         );
         await userRepository.saveUserMeetingHistory(
-          roomName: event.roomName,
-          id: user.uid,
+          request: MeetingRequest(
+            uid: user.uid,
+            roomName: event.roomName,
+          ),
         );
       }
       emit(const MeetingStarted());
