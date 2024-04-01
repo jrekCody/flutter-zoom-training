@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_zoom/data/repository/impl/auth_repository_impl.dart';
-import 'package:flutter_zoom/data/repository/impl/jitsi_repository_impl.dart';
-import 'package:flutter_zoom/data/repository/impl/user_repository_impl.dart';
+import 'package:flutter_zoom/di/di.dart';
 import 'package:flutter_zoom/utils/enum/app_route_enum.dart';
 import 'package:flutter_zoom/utils/extension/string_extension.dart';
 import 'package:flutter_zoom/utils/string_util.dart';
@@ -17,10 +15,7 @@ class NewMeetingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => NewMeetingBloc(
-          jitsiRepository: RepositoryProvider.of<JitsiRepositoryImpl>(context),
-          authRepository: RepositoryProvider.of<AuthRepositoryImpl>(context),
-          userRepository: RepositoryProvider.of<UserRepositoryImpl>(context)),
+      create: (context) => getIt<NewMeetingBloc>(),
       child: Scaffold(
           appBar: AppBar(
             title: const Text(StringUtil.meetChat),

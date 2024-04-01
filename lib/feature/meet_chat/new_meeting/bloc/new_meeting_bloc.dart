@@ -5,11 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom/data/repository/auth_repository.dart';
 import 'package:flutter_zoom/data/repository/jitsi_repository.dart';
 import 'package:flutter_zoom/data/repository/user_repository.dart';
+import 'package:injectable/injectable.dart';
 
 part 'new_meeting_event.dart';
 
 part 'new_meeting_state.dart';
 
+@injectable
 class NewMeetingBloc extends Bloc<NewMeetingEvent, NewMeetingState> {
   final JitsiRepository jitsiRepository;
   final AuthRepository authRepository;
