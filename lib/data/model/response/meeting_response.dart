@@ -3,17 +3,20 @@ import 'package:flutter_zoom/data/model/document/meeting_document.dart';
 
 class MeetingResponse extends Equatable {
   const MeetingResponse({
+    required this.uid,
     required this.roomName,
     required this.createdAt,
   });
 
+  final String uid;
   final String roomName;
   final DateTime? createdAt;
 
   factory MeetingResponse.fromDocument(
-    MeetingDocument document,
-  ) {
+      MeetingDocument document,
+      ) {
     return MeetingResponse(
+      uid: document.uid,
       roomName: document.roomName,
       createdAt: document.createdAt?.toDate(),
     );
@@ -21,7 +24,8 @@ class MeetingResponse extends Equatable {
 
   @override
   List<Object?> get props => [
-        roomName,
-        createdAt,
-      ];
+    uid,
+    roomName,
+    createdAt,
+  ];
 }
