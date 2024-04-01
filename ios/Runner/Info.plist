@@ -45,5 +45,20 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+    	<dict>
+    		<key>CFBundleTypeRole</key>
+    		<string>Editor</string>
+    		<key>CFBundleURLSchemes</key>
+    		<array>
+    			<string>com.googleusercontent.apps.813695073093-92psv1iu20vp574j6c2vhvk18sdetjh0</string>
+    		</array>
+    	</dict>
+    </array>
+	<key>NSCameraUsageDescription</key>
+    <string>The app needs access to your camera for meetings.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>The app needs access to your microphone for meetings.</string>
 </dict>
 </plist>
