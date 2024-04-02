@@ -140,4 +140,6 @@ void main() {
     expect(meetings.first.uid, meetingRequest.uid);
     expect(meetings.first.roomName, meetingRequest.roomName);
   });
+
+  tearDown(() => fakeFirebaseFirestore.clearPersistence());
 }
