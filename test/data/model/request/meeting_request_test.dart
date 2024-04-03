@@ -5,14 +5,15 @@ void main() {
   const testUid = 'test-uid';
   const testRoom = 'test-room-name';
 
+  // create a new instance of the MeetingRequest
+  final request = MeetingRequest(
+    uid: testUid,
+    roomName: testRoom,
+    createdAt: DateTime.now(),
+  );
+
   group('MeetingRequest', () {
     test('copyWith should return a correct copy', () {
-      final request = MeetingRequest(
-        uid: testUid,
-        roomName: testRoom,
-        createdAt: DateTime.now(),
-      );
-
       // create a new copy of the request
       final copy = request.copyWith(
         uid: 'new-$testUid',
@@ -24,13 +25,8 @@ void main() {
       expect(copy.roomName, isNot(testRoom));
     });
 
-    test('copyWith should return original value when no new value provided', () {
-      final request = MeetingRequest(
-        uid: testUid,
-        roomName: testRoom,
-        createdAt: DateTime.now(),
-      );
-
+    test('copyWith should return original value when no new value provided',
+        () {
       // no new value provided
       final copy = request.copyWith();
 
@@ -39,12 +35,6 @@ void main() {
     });
 
     test('props should return correct properties', () {
-      final request = MeetingRequest(
-        uid: testUid,
-        roomName: testRoom,
-        createdAt: DateTime.now(),
-      );
-
       // get the properties
       final props = request.props;
 
