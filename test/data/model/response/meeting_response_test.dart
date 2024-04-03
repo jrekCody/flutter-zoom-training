@@ -14,7 +14,7 @@ void main() {
   );
 
   group('MeetingResponse', () {
-    test('description', () {
+    test('fromDocument should return correct response', () {
       final response = MeetingResponse.fromDocument(document);
 
       expect(response.uid, 'test-uid');
