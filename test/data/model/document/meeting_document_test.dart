@@ -52,5 +52,21 @@ void main() {
       expect(copy.roomName, 'new-room');
       expect(copy.createdAt, document.createdAt);
     });
+
+    test('props should returns correct properties', () {
+      final document = MeetingDocument(
+        uid: testUid,
+        roomName: testRoom,
+        createdAt: Timestamp.now(),
+      );
+
+      final props = document.props;
+
+      expect(props, [
+        testUid,
+        testRoom,
+        document.createdAt,
+      ]);
+    });
   });
 }

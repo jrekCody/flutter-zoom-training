@@ -7,7 +7,7 @@ void main() {
   const testEmail = 'test-email';
   const testName = 'test-name';
   const testPhoto = 'test-photo';
-  
+
   group('UserDocument', () {
     test('fromMap constructs correct instance', () {
       final map = {
@@ -60,6 +60,24 @@ void main() {
       expect(copy.email, 'new-email');
       expect(copy.name, 'new-display-name');
       expect(copy.photo, 'new-photo-url');
+    });
+
+    test('props should returns correct properties', () {
+      const document = UserDocument(
+        id: testUid,
+        email: testEmail,
+        name: testName,
+        photo: testPhoto,
+      );
+
+      final props = document.props;
+
+      expect(props, [
+        testUid,
+        testEmail,
+        testName,
+        testPhoto,
+      ]);
     });
   });
 }
