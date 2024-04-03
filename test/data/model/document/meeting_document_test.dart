@@ -4,39 +4,42 @@ import 'package:flutter_zoom/data/model/document/meeting_document.dart';
 import 'package:flutter_zoom/data/constant/firebase_fields.dart';
 
 void main() {
+  const testUid = 'test-uid';
+  const testRoom = 'test-room-name';
+
   group('MeetingDocument', () {
     test('fromMap constructs correct instance', () {
       final map = {
-        FirebaseFields.uid: 'test-uid',
-        FirebaseFields.roomName: 'test-room-name',
+        FirebaseFields.uid: testUid,
+        FirebaseFields.roomName: testRoom,
         FirebaseFields.createdAt: Timestamp.now(),
       };
 
       final document = MeetingDocument.fromMap(map);
 
-      expect(document.uid, 'test-uid');
-      expect(document.roomName, 'test-room-name');
+      expect(document.uid, testUid);
+      expect(document.roomName, testRoom);
       expect(document.createdAt, isNotNull);
     });
 
     test('toMap returns correct map', () {
       final document = MeetingDocument(
-        uid: 'test-uid',
-        roomName: 'test-room-name',
+        uid: testUid,
+        roomName: testRoom,
         createdAt: Timestamp.now(),
       );
 
       final map = document.toMap();
 
-      expect(map[FirebaseFields.uid], 'test-uid');
-      expect(map[FirebaseFields.roomName], 'test-room-name');
+      expect(map[FirebaseFields.uid], testUid);
+      expect(map[FirebaseFields.roomName], testRoom);
       expect(map[FirebaseFields.createdAt], isNotNull);
     });
 
     test('copyWith returns correct copy', () {
       final document = MeetingDocument(
-        uid: 'test-uid',
-        roomName: 'test-room-name',
+        uid: testUid,
+        roomName: testRoom,
         createdAt: Timestamp.now(),
       );
 
