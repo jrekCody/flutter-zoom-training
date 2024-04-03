@@ -28,8 +28,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthSignOut>(_onAuthSignOut);
   }
 
-  late StreamSubscription _streamUserAuthChanged;
-
   FutureOr<void> _onAuthSignInStarted(
     AuthSignInStarted event,
     Emitter<AuthState> emit,
@@ -57,12 +55,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     AuthUserChanged event,
     Emitter<AuthState> emit,
   ) {
-    final streamUser = authRepository.userAuthChanges();
-    _streamUserAuthChanged = streamUser.listen((event) {
-      if (event != null) {
-        add(AuthUpdatedUser(user: event));
-      }
-    });
+    final user = authRepository.currentUser();
+    user != null
+        ? emit(Authenticated(user: user))
+        : emit(const UnAuthenticated());
   }
 
   FutureOr<void> _onAuthUpdatedUser(
@@ -78,11 +74,5 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     await authRepository.signOut();
     emit(const UnAuthenticated());
-  }
-
-  @override
-  Future<void> close() {
-    _streamUserAuthChanged.cancel();
-    return super.close();
   }
 }
