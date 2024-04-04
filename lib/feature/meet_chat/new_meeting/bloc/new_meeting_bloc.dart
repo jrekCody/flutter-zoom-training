@@ -31,24 +31,22 @@ class NewMeetingBloc extends Bloc<NewMeetingEvent, NewMeetingState> {
     Emitter<NewMeetingState> emit,
   ) async {
     emit(const MeetingLoading());
-    try {
-      final user = authRepository.currentUser();
-      if (user != null) {
-        await jitsiRepository.createJoinMeeting(
-          event.roomName,
-          user,
-          userName: user.displayName!,
-        );
-        await userRepository.saveUserMeetingHistory(
-          request: MeetingRequest(
-            uid: user.uid,
-            roomName: event.roomName,
-          ),
-        );
-      }
+    final user = authRepository.currentUser();
+    if (user != null) {
+      await jitsiRepository.createJoinMeeting(
+        event.roomName,
+        user,
+        userName: user.displayName!,
+      );
+      await userRepository.saveUserMeetingHistory(
+        request: MeetingRequest(
+          uid: user.uid,
+          roomName: event.roomName,
+        ),
+      );
       emit(const MeetingStarted());
-    } catch (e) {
-      emit(MeetingFailed(message: e.toString()));
+    } else {
+      emit(const MeetingFailed(message: 'failed to create meeting'));
     }
   }
 }
