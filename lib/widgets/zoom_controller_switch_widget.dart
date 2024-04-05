@@ -15,17 +15,19 @@ class ZoomControllerSwitchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 60,
-      color: ColorUtil.lightGreyColor,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(label),
-            Switch.adaptive(value: switchValue, onChanged: onChanged),
-          ],
+    return Material(
+      child: Container(
+        height: 60,
+        color: ColorUtil.lightGreyColor,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(label),
+              Switch.adaptive(value: switchValue, onChanged: onChanged),
+            ],
+          ),
         ),
       ),
     );

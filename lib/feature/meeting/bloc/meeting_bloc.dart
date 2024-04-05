@@ -18,8 +18,6 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
   final AuthRepository authRepository;
   final MeetingMapper meetingMapper;
 
-  late StreamSubscription _streamMeetingHistory;
-
   MeetingBloc({
     required this.userRepository,
     required this.authRepository,
@@ -39,11 +37,12 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
       final streamMeeting = userRepository.getUserMeetingHistory(
         userId: user.uid,
       );
-
-      _streamMeetingHistory = streamMeeting.listen((event) async {
+      streamMeeting.listen((event) {
         final meetings = meetingMapper.responseToDomainList(event);
         add(MeetingHistoryLoaded(streamMeeting: meetings));
       });
+    } else {
+      emit(state.copyWith(isFetchingMeeting: false));
     }
   }
 
@@ -55,11 +54,5 @@ class MeetingBloc extends Bloc<MeetingEvent, MeetingState> {
       meeting: event.streamMeeting,
       isFetchingMeeting: false,
     ));
-  }
-
-  @override
-  Future<void> close() {
-    _streamMeetingHistory.cancel();
-    return super.close();
   }
 }

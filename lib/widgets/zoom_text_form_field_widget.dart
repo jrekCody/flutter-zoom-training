@@ -13,16 +13,18 @@ class ZoomTextFormFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      maxLines: 1,
-      textAlign: TextAlign.center,
-      decoration: InputDecoration(
-        fillColor: ColorUtil.lightGreyColor,
-        filled: true,
-        border: InputBorder.none,
-        hintText: hint,
+    return Material(
+      child: TextFormField(
+        maxLines: 1,
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+          fillColor: ColorUtil.lightGreyColor,
+          filled: true,
+          border: InputBorder.none,
+          hintText: hint,
+        ),
+        onChanged: onChanged,
       ),
-      onChanged: onChanged,
     );
   }
 }

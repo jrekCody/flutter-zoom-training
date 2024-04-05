@@ -6,12 +6,13 @@ import 'package:injectable/injectable.dart';
 @Singleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
   final FirebaseAuth firebaseAuth;
+  final GoogleSignIn googleSignIn;
 
-  const AuthRepositoryImpl(this.firebaseAuth);
+  const AuthRepositoryImpl(this.firebaseAuth, this.googleSignIn);
 
   @override
   Future<UserCredential> signInWithGoogle() async {
-    final googleUser = await GoogleSignIn().signIn();
+    final googleUser = await googleSignIn.signIn();
 
     final auth = await googleUser?.authentication;
 

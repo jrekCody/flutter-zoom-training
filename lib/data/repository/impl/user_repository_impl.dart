@@ -28,7 +28,7 @@ class UserRepositoryImpl implements UserRepository {
 
     await firebaseFirestore
         .collection(FirebaseCollections.userCollection)
-        .doc(request.id)
+        .doc(user.id)
         .set(
           user.toMap(),
           SetOptions(merge: true),
@@ -47,7 +47,7 @@ class UserRepositoryImpl implements UserRepository {
 
     await firebaseFirestore
         .collection(FirebaseCollections.userCollection)
-        .doc(request.uid)
+        .doc(meeting.uid)
         .collection(FirebaseCollections.meetingCollection)
         .add(meeting.toMap());
   }
