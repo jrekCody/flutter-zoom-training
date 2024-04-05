@@ -47,12 +47,12 @@ class NewMeetingScreen extends StatelessWidget {
                     },
                   ),
                   ZoomFeatureButtonWidget(
-                    icon: Icons.add_box_rounded,
+                    icon: Icons.calendar_today,
                     label: StringUtil.schedule,
                     onPressed: () {},
                   ),
                   ZoomFeatureButtonWidget(
-                    icon: Icons.add_box_rounded,
+                    icon: Icons.arrow_upward_rounded,
                     label: StringUtil.shareScreen,
                     onPressed: () {},
                   ),
