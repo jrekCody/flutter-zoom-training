@@ -66,9 +66,7 @@ void main() {
     final paddingFinder = find.byType(Padding);
     final paddingWidget = tester.widget<Padding>(paddingFinder);
 
-    /// EdgeInsets.symmetric(horizontal: 10), which applies 10 padding to
-    /// both the left and right, resulting in a total horizontal padding of 20.
-    expect(paddingWidget.padding.horizontal, 20);
+    expect(paddingWidget.padding, const EdgeInsets.symmetric(horizontal: 10));
     expect(labelFinder, findsOneWidget);
   });
   testWidgets('ZoomButtonWidget set label and row main axis alignment',
